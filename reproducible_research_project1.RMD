@@ -87,7 +87,7 @@ df_fill$steps[missing] <-
 
 ```{r}
 newdf_fill <- aggregate(df_fill$steps, list(df_fill$date), FUN = sum)
-colnames(newdf_fill) <- c("Dates, Steps")
+colnames(newdf_fill) <- c("Dates", "Steps")
 
 g3 <-
         ggplot(newdf_fill, aes(Steps)) + geom_histogram(binwidth = 3000, fill = "blue") + ggtitle("Steps per Day (filled missing values") + xlab("Daily Steps") + ylab("Frequency")
