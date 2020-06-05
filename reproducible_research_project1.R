@@ -57,15 +57,15 @@ df_fill$steps[missing] <-
 
 newdf_fill <-
         aggregate(df_fill$steps, list(df_fill$date), FUN = sum)
-colnames(newdf_fill) <- c("Dates, Steps")
+colnames(newdf_fill) <- c("Dates", "Steps")
 
 g3 <-
         ggplot(newdf_fill, aes(Steps)) + geom_histogram(binwidth = 3000, fill = "blue") + ggtitle("Steps per Day (filled missing values") + xlab("Daily Steps") + ylab("Frequency")
 
-mean_steps_fill <- mean(newdf_fill$Steps)
+mean_steps_fill <- mean(newdf_fill$Steps, na.rm = TRUE)
 mean_steps_fill
 
-median_steps_fill <- median(newdf_fill$Steps)
+median_steps_fill <- median(newdf_fill$Steps, na.rm = TRUE)
 median_steps_fill
 
 df_fill$numdate <- as.Date(df_fill$date, format = "%Y-%m-%d")
